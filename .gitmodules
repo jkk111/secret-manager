@@ -1,0 +1,3 @@
+[submodule "secret-manager-gui"]
+	path = secret-manager-gui
+	url = https://github.com/jkk111/secret-manager-gui
