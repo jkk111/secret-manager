@@ -9,6 +9,7 @@
   "author": "jkk111",
   "license": "ISC",
   "dependencies": {
+    "rimraf": "^2.6.2",
     "utiltoolkit": "github:jkk111/node-util-toolkit"
   }
 }

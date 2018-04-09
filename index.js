@@ -110,7 +110,7 @@ let touch = (file, pass) => {
 }
 
 module.exports = {
-  get, set, get_files, touch, Client
+  get, set, get_files, touch, write_secrets, Client
 }
 
 

@@ -2,7 +2,7 @@ let http = require('http');
 let express = require('express');
 let { Network, Crypto } = require('utiltoolkit')
 let { createServer } = require('net');
-let { get, set, get_files, touch } = require('./')
+let { get, set, get_files, touch, write_secrets } = require('./')
 let { socket = 8081 } = process.env;
 let bodyParser = require('body-parser')
 
@@ -12,6 +12,7 @@ let server = http.createServer(app);
 server.listen(socket);
 
 app.use(express.static(`${__dirname}/static`));
+app.use(express.static(`${__dirname}/build`));
 
 class SecretManager {
   constructor(timeout = 60 * 1000) {
@@ -115,6 +116,16 @@ app.post('/touch', bodyParser.json(), (req, res) => {
   if(!files.includes(file)) {
     touch(file, password);
   }
-
   res.send('OK')
+})
+
+app.post('/change_pass', bodyParser.json(), (req, res) => {
+  let { file, password, updated } = req.body;
+  let data = get(file, password)
+  if(data.success !== false) {
+    write_secrets(file, data, updated);
+    res.send({ success: true });
+  } else {
+    res.send(data);
+  }
 })
