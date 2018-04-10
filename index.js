@@ -2,7 +2,7 @@ let fs = require('fs')
 let os = require('os')
 let path = require('path')
 let crypto = require('crypto');
-let Client = require('./Client')
+let Client = require('./client')
 
 try {
   fs.mkdirSync(path.join(os.homedir(), '.secrets'));
