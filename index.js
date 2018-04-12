@@ -73,11 +73,13 @@ let read_secrets = (file, pass) => {
     let secrets = JSON.parse(contents.toString());
     return secrets
   } catch(e) {
-    return { success: false, error: 'INVALID_PASS' }
+    let res = { success: false, error: 'INVALID_PASS' };
+    return res
   }
 }
 
 let write_secrets = (file, secrets, pass) => {
+  console.log('here')
   let file_path = path.join(secret_path, file);
   secrets = encrypt(pass, secrets);
   try {
@@ -97,8 +99,12 @@ let get = (file, pass) => {
 
 let set = (file, key, value, pass) => {
   let secrets = read_secrets(file, pass);
-  secrets[key] = value;
-  write_secrets(file, secrets, pass);
+  if(secrets.success === false) {
+    return secrets;
+  } else {
+    secrets[key] = value;
+    write_secrets(file, secrets, pass);
+  }
 }
 
 let get_files = () => {

@@ -9,8 +9,12 @@
   },
   "author": "jkk111",
   "license": "ISC",
+  "preferGlobal": true,
   "dependencies": {
     "rimraf": "^2.6.2",
     "utiltoolkit": "github:jkk111/node-util-toolkit"
+  },
+  "bin": {
+    "secrets": "cli.js"
   }
 }
