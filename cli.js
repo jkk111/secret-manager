@@ -6,9 +6,18 @@ let all_input = [];
 
 let input_done = () => {
   let str = Buffer.concat(all_input).toString().trim();
+  let parsed = null;
+  try {
+     parsed = JSON.parse(str)
+  } catch(e) {
+    throw new Error("Invalid Input");
+  }
 
-  let { key, value, pass, store } = JSON.parse(str)
-  console.log(set(store, key, value, pass))
+  let { key, value, pass, store } = parsed;
+
+  if(set(store, key, value, pass)) {
+    throw new Error("Incorrect Password");
+  }
 }
 
 let readable_handler = () => {
