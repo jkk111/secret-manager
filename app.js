@@ -4,7 +4,11 @@ let { Network, Crypto } = require('utiltoolkit')
 let { createServer } = require('net');
 let { get, set, get_files, touch, write_secrets } = require('./')
 let { socket = 8081 } = process.env;
-let bodyParser = require('body-parser')
+let bodyParser = require('body-parser');
+let path = require('path')
+
+let gui_path = require.resolve('@jkk111/secret-manager-gui')
+gui_path = path.join(gui_path, 'build');
 
 let app = express();
 
@@ -12,7 +16,7 @@ let server = http.createServer(app);
 server.listen(socket);
 
 app.use(express.static(`${__dirname}/static`));
-app.use(express.static(`${__dirname}/build`));
+app.use(express.static(gui_path));
 
 class SecretManager {
   constructor(timeout = 60 * 1000) {
