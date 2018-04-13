@@ -7,9 +7,9 @@ const rimraf = require('rimraf')
 
 const fs = require('fs');
 
-execSync('npm run build', {
-  cwd: gui_path
-})
+// execSync('npm run build', {
+//   cwd: gui_path
+// })
 
 rimraf(static_path, () => {
   fs.renameSync(build_path, static_path);
