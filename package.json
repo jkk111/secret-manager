@@ -9,9 +9,13 @@
   },
   "author": "jkk111",
   "license": "ISC",
+  "preferGlobal": true,
   "dependencies": {
     "rimraf": "^2.6.2",
     "utiltoolkit": "github:jkk111/node-util-toolkit",
     "@jkk111/secret-manager-gui": "^0.1.0"
+  },
+  "bin": {
+    "secrets": "cli.js"
   }
 }
