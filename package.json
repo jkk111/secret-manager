@@ -1,6 +1,6 @@
 {
-  "name": "secret_manager",
-  "version": "1.0.0",
+  "name": "@jkk111/secret_manager",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "rimraf": "^2.6.2",
-    "utiltoolkit": "github:jkk111/node-util-toolkit"
+    "utiltoolkit": "github:jkk111/node-util-toolkit",
+    "@jkk111/secret-manager-gui": "^0.1.0"
   }
 }

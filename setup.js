@@ -7,10 +7,6 @@ const rimraf = require('rimraf')
 
 const fs = require('fs');
 
-execSync('npm install', {
-  cwd: gui_path
-})
-
 execSync('npm run build', {
   cwd: gui_path
 })
